@@ -1,11 +1,10 @@
 ---
-title: "Pea Aphids"
+title: "GAE5: Pea Aphids"
 author: "your-name-here"
 format: 
   html:
-    theme: custom.scss
     embed-resources: true
-    toc: true
+    toc: false
     code-tools: true
 
 csl: ecology.csl
@@ -22,7 +21,7 @@ bibliography: references.bib
 knitr::opts_chunk$set(
   echo = FALSE,
   message = FALSE,
-  warning = FALSE
+  warning = TRUE
   ) 
 
 library(emmeans)
@@ -38,20 +37,17 @@ library(tidyverse)
 options(knitr.kable.NA = '')
 ```
 
-<!--# This chunk is a work-around to allow left-aligned table captions -->
-
-```{=html}
-<style type="text/css">
-caption, .table-caption {
-  text-align: left;
-}
-</style>
-```
 ## Introduction:
 
 Pea aphids, *Acyrthosiphon pisum*, can be red or green. Red aphids make carotenoids with genes thought to have jumped from a fungus into the aphid genome some time during recent evolutionary history. Aphid body color is thought to be genetically controlled by a single locus, with red being dominant over green. Ladybird beetles tend to consume red aphids on green plants, and parasitoid wasps preferentially attack green aphids. The predation and parasitism pressures appear to maintain the color variation in natural aphid populations.
 
 While screening pea aphid strains from natural populations collected in France, @tsuchida2010 found several strains of green aphids producing red nymphs. As the nymphs grew, their body color changed from reddish to greenish, and the adults became green. In a survey of endosymbiotic microbiota in these aphid strains they found a previously unrecognized aphid endosymbiont of the genus *Rickettsiella*. They hypothesised is that the color change was associated with the *Rickettsiella* infection.
+
+```{r}
+#| label: dataImport
+
+aphids <- read_csv("PeaAphids.csv", show_col_types = FALSE)
+```
 
 ## Methods:
 
@@ -68,6 +64,8 @@ knitr::include_graphics("PeaAphids.jpg")
 
 To measure color, the researchers used Adobe Photoshop CS (version 8.01, Adobe Inc., San Jose, CA, USA) to measure the hue of 10 pixels from color photos of the aphids. The average hue angle [^1] was then recorded for each aphid.
 
+[^1]: Hue can typically be represented quantitatively by a single number, often corresponding to an angular position around a central or neutral point or axis on a colorspace coordinate diagram ![](Different-hue-names.jpg){width="50%"}.
+
 ### Statistical Methods:
 
-[^1]: Hue can typically be represented quantitatively by a single number, often corresponding to an angular position around a central or neutral point or axis on a colorspace coordinate diagram ![](Different-hue-names.jpg){width="50%"}.
+## References:
